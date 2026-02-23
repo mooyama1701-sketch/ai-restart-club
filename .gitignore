@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Backup originals (not needed in repo)
+images/amazon_original/
+
+# Watermark script (utility, not part of site)
+add_watermark.py

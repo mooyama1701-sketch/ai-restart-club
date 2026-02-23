@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | AI Restart Club</title>
+    <meta name="description" content="AI Restart Club主宰 大山正和のプロフィールと略歴。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Additional CSS for Timeline -->
+    <style>
+        .about-header {
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+            background: linear-gradient(135deg, var(--primary) 0%, rgba(226, 74, 104, 0.05) 100%);
+            text-align: center;
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image-col {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .profile-avatar-placeholder {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 15px 30px rgba(226, 74, 104, 0.2);
+        }
+
+        .profile-info {
+            flex: 2 1 400px;
+        }
+
+        .profile-role {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-name {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .profile-name-ruby {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .profile-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Timeline styles */
+        .timeline-section {
+            padding: 5rem 0;
+            background-color: var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--gold), var(--accent));
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 14px;
+            top: 15px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 0 5px rgba(255, 176, 0, 0.2);
+            z-index: 2;
+        }
+
+        .timeline-item.accent .timeline-dot {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 5px rgba(226, 74, 104, 0.2);
+        }
+
+        .timeline-content {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* Arrow pointing to the timeline dot */
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 18px;
+            border-width: 12px 12px 12px 0;
+            border-style: solid;
+            border-color: transparent var(--surface) transparent transparent;
+            filter: drop-shadow(-1px 0px 1px rgba(0, 0, 0, 0.02));
+        }
+
+        .timeline-content:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-period {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(11, 25, 44, 0.05);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-item.accent .timeline-period {
+            background: rgba(226, 74, 104, 0.1);
+            color: var(--accent);
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .timeline-desc {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* =========================================
+           PORTFOLIO SECTION
+           ========================================= */
+        .portfolio-section {
+            padding: 6rem 0;
+            background: var(--surface);
+        }
+
+        .portfolio-intro {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            aspect-ratio: 1 / 1;
+            background: var(--primary);
+        }
+
+        .portfolio-item.tall {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .portfolio-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(11, 25, 44, 0.85) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay span {
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-overlay i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            font-size: 2rem;
+            color: white;
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay i {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 25, 44, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10001;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-prev {
+            left: 1.5rem;
+        }
+
+        .lightbox-next {
+            right: 1.5rem;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-item.tall {
+                grid-row: span 1;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .lightbox-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-prev {
+                left: 0.5rem;
+            }
+
+            .lightbox-next {
+                right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-accent">AI</span> Restart Club
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html#problems">お悩み</a>
+                <a href="index.html#solutions">当クラブの強み</a>
+                <a href="courses.html">当クラブで学べること</a>
+                <a href="about.html" style="font-weight: 700; border-bottom: 2px solid var(--accent);">About</a>
+                <a href="https://x.com/AIGOGO1701" target="_blank" rel="noopener noreferrer" class="social-link-nav"
+                    aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="index.html#cta" class="btn btn-sm btn-outline">無料相談に申し込む</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Header -->
+        <section class="about-header">
+            <div class="container reveal-fade-up">
+                <h1 class="section-title mb-1">主宰者について</h1>
+                <p class="section-desc">「AI × あなたの経験」を全力でサポートします</p>
+            </div>
+        </section>
+
+        <!-- Profile Card -->
+        <section class="section pt-0" style="padding-top: 0;">
+            <div class="container">
+                <div class="profile-card reveal-fade-up" style="transition-delay: 0.2s;">
+                    <div class="profile-image-col">
+                        <img src="images/profile.jpg" alt="大山 正和"
+                            style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: top; margin: 0 auto 1.5rem; display: block; box-shadow: 0 15px 30px rgba(11, 25, 44, 0.2); border: 4px solid var(--surface);">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-role">サイト主宰</div>
+                        <h2 class="profile-name">大山 正和</h2>
+                        <span class="profile-name-ruby">Masakazu Oyama</span>
+
+                        <div class="profile-location mb-2">
+                            <i class="fas fa-map-marker-alt text-accent"></i> 大阪府在住
+                        </div>
+
+                        <p class="text-main" style="line-height: 1.8;">
+                            専門学校を卒業後、某経理学校の簿記講師を2年務め、「専門的な内容を分かりやすく教える」スキルの原点を築きました。<br><br>
+                            その後IT業界へ入り、プログラム開発（C言語・VBなど）を10年間経験。さらに、IT企業にてインフラ系サーバエンジニアとして20年間勤務し、プリセールスから要件定義、設計、構築、導入（Windows/Linux）まで、上流から下流までを一貫して担当しました。システム開発からインフラ構築まで、<strong>トータル30年にわたるIT業界での豊富な経験</strong>を持っています。<br><br>
+                            IT企業を退職後はフリーランスとして独立。現在は中国輸入物販（主にAmazon販売）、コミュニティ講師、Amazonカタログデザイナー（Photoshop）、そして生成AIの学校「飛翔」会員として最新のAI活用を実践するなど、これまでのスキルを掛け合わせて幅広く活動中です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline / History -->
+        <section class="timeline-section bg-light">
+            <div class="container">
+                <div class="section-header text-center reveal-fade-up">
+                    <h2 class="section-title">略歴・キャリア</h2>
+                </div>
+
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item reveal-fade-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-period">キャリアの原点</span>
+                            <h3 class="timeline-title">某経理学校 簿記講師</h3>
+                            <p class="timeline-desc">専門学校を卒業後、2年間にわたり某経理学校にて簿記の講師を担当。この経験が「人に教える」「分かりやすく伝える」スキルの原点となる。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item reveal-fade-left" style="transition-delay: 0.1s;">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-period">プログラマー時代 (10年)</span>
+                            <h3 class="timeline-title">IT企業にてプログラム開発</h3>
+                            <p class="timeline-desc">C言語やVB（Visual
+                                Basic）などを使用し、システム開発の最前線で10年間プログラマとして活躍。論理的思考とシステム構築の基礎を徹底的に叩き込む。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item reveal-fade-left" style="transition-delay: 0.2s;">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-period">インフラエンジニア時代 (20年)</span>
+                            <h3 class="timeline-title">ITインフラ系サーバエンジニア</h3>
+                            <p class="timeline-desc">
+                                WindowsおよびLinux環境において、プリセールスから要件定義、設計、構築、導入まで上流から下流まで一貫して担当。20年間、企業のシステム基盤を支え続ける。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 (Current) -->
+                    <div class="timeline-item accent reveal-fade-left" style="transition-delay: 0.3s;">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-period">現在</span>
+                            <h3 class="timeline-title">独立・フリーランスとしての活動</h3>
+                            <div class="timeline-desc">
+                                IT企業を退職し、フリーランスに転身。ITの枠を超えて多彩なスキルを掛け合わせて活動中。
+                                <ul style="margin-top: 10px; margin-left: 1.5rem; list-style-type: disc;">
+                                    <li><strong>中国輸入物販</strong>：主にAmazonを利用した販売事業</li>
+                                    <li><strong>コミュニティ講師</strong>：ITや物販のノウハウを教える講師活動</li>
+                                    <li><strong>Amazonカタログデザイナー</strong>：Photoshopを活用した商品画像・カタログデザイン</li>
+                                    <li><strong>生成AIの学校「飛翔」会員</strong>：最新のAI技術を学び、実践中</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <div class="section-header text-center reveal-fade-up">
+                    <span class="badge">PORTFOLIO</span>
+                    <h2 class="section-title">制作実績</h2>
+                    <p class="portfolio-intro">
+                        Amazonカタログデザイナーとして制作した商品画像の一部をご紹介します。<br>Photoshopを活用し、商品の魅力を最大限に引き出すデザインを心がけています。</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item tall reveal-fade-up" style="transition-delay: 0.05s;"
+                        onclick="openLightbox(0)">
+                        <img src="images/amazon/画像.jpg" alt="カー用品カタログ" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>カー用品</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.1s;"
+                        onclick="openLightbox(1)">
+                        <img src="images/amazon/TOP画像（ブラウン＆ワインレッド）.jpg" alt="ペンケースカタログ" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>ペンケース</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.15s;"
+                        onclick="openLightbox(2)">
+                        <img src="images/amazon/コンテンツ１.jpg" alt="美容用品カタログ" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>美容用品</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.2s;"
+                        onclick="openLightbox(3)">
+                        <img src="images/amazon/画像１.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item tall reveal-fade-up" style="transition-delay: 0.25s;"
+                        onclick="openLightbox(4)">
+                        <img src="images/amazon/画像２ 5.jpg" alt="ファッション小物カタログ" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>ファッション小物</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.3s;"
+                        onclick="openLightbox(5)">
+                        <img src="images/amazon/画像３.jpg" alt="収納用品カタログ" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>収納用品</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.35s;"
+                        onclick="openLightbox(6)">
+                        <img src="images/amazon/画像２ 2.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.4s;"
+                        onclick="openLightbox(7)">
+                        <img src="images/amazon/画像２ 3.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.45s;"
+                        onclick="openLightbox(8)">
+                        <img src="images/amazon/画像４.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.5s;"
+                        onclick="openLightbox(9)">
+                        <img src="images/amazon/画像２.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.55s;"
+                        onclick="openLightbox(10)">
+                        <img src="images/amazon/画像６.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.6s;"
+                        onclick="openLightbox(11)">
+                        <img src="images/amazon/画像３ 2.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.65s;"
+                        onclick="openLightbox(12)">
+                        <img src="images/amazon/画像２ 6.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.7s;"
+                        onclick="openLightbox(13)">
+                        <img src="images/amazon/画像２ 7.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.75s;"
+                        onclick="openLightbox(14)">
+                        <img src="images/amazon/画像２ 8.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.8s;"
+                        onclick="openLightbox(15)">
+                        <img src="images/amazon/画像４ 2.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.85s;"
+                        onclick="openLightbox(16)">
+                        <img src="images/amazon/画像２ 4.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.9s;"
+                        onclick="openLightbox(17)">
+                        <img src="images/amazon/画像２ 9.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 0.95s;"
+                        onclick="openLightbox(18)">
+                        <img src="images/amazon/画像３ 3.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 1.0s;"
+                        onclick="openLightbox(19)">
+                        <img src="images/amazon/画像２ 10.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 1.05s;"
+                        onclick="openLightbox(20)">
+                        <img src="images/amazon/画像２ 11.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal-fade-up" style="transition-delay: 1.1s;"
+                        onclick="openLightbox(21)">
+                        <img src="images/amazon/画像２ 12.jpg" alt="商品画像デザイン" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span>商品画像</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="閉じる">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="前へ">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="拡大画像">
+            <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="次へ">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="lightbox-counter" id="lightbox-counter"></div>
+        </div>
+
+        <!-- Bottom CTA -->
+        <section class="section text-center" style="background: var(--navy);">
+            <div class="container reveal-zoom">
+                <h2 class="text-white mb-2">私と一緒にAIの第一歩を踏み出しませんか？</h2>
+                <a href="index.html#cta" class="btn btn-primary btn-lg pulse-effect">
+                    無料相談に申し込む
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="footer-logo mb-1">
+                <span class="logo-accent">AI</span> Restart Club
+            </div>
+            <div class="footer-links mb-2">
+                <a href="index.html#contact">お問い合わせ</a>
+                <a href="index.html#terms">利用規約</a>
+                <a href="index.html#privacy">プライバシーポリシー</a>
+                <a href="index.html#law">特定商取引法に基づく表記</a>
+            </div>
+            <p class="copyright">&copy; 2026 AI Restart Club. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
