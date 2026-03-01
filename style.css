@@ -1176,10 +1176,20 @@ h4 {
   background: #f7f8fa;
 }
 
-.chatbot-iframe {
+.chatbot-iframe-wrapper {
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.chatbot-iframe {
+  width: 100%;
+  height: calc(100% + 56px);
+  /* 隠す分だけ高さを増やす */
   border: none;
+  margin-top: -56px;
+  /* 内部ヘッダー(56px)を上に押し出す */
 }
 
 /* ウェルカム画面 */

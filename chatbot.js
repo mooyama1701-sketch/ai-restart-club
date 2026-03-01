@@ -86,7 +86,9 @@
             </div>
           </div>
           <!-- Dify iframe（接続時に表示） -->
-          <iframe id="chatbot-iframe" class="chatbot-iframe" style="display:none;" allow="microphone"></iframe>
+          <div id="chatbot-iframe-wrapper" class="chatbot-iframe-wrapper" style="display:none;">
+            <iframe id="chatbot-iframe" class="chatbot-iframe" allow="microphone"></iframe>
+          </div>
         </div>
 
         <!-- フッター -->
@@ -108,6 +110,7 @@
     const closeBtn = document.getElementById('chatbot-close');
     const iframe = document.getElementById('chatbot-iframe');
     const welcome = document.getElementById('chatbot-welcome');
+    const iframeWrapper = document.getElementById('chatbot-iframe-wrapper');
 
     // トリガーボタンクリック → ウィンドウ開く
     trigger.addEventListener('click', () => {
@@ -117,7 +120,7 @@
       // Dify URLが設定済みの場合、iframeをロード
       if (CONFIG.difyUrl && !iframe.src) {
         iframe.src = CONFIG.difyUrl;
-        iframe.style.display = 'block';
+        iframeWrapper.style.display = 'block';
         welcome.style.display = 'none';
       }
     });
@@ -142,7 +145,7 @@
         // Dify URLが設定済みの場合、iframeに切り替え
         if (CONFIG.difyUrl) {
           iframe.src = CONFIG.difyUrl;
-          iframe.style.display = 'block';
+          iframeWrapper.style.display = 'block';
           welcome.style.display = 'none';
         } else {
           // Dify未接続時はCTAセクションへ誘導
